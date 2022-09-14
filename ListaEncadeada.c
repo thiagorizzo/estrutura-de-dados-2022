@@ -2,12 +2,12 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-typedef struct no { // alem de vc dar um "apelido" vc pode nomear o struct dentro do typedef
+typedef struct no {
 	int valor;
 	struct no *prox;
-} no;// nesse caso vc deu um apelido de no
+} no;
  
-void adicionar(no **lista , int valor){// nesse caso ele fez um ponteiro q aponta para um ponteiro pq lista ja é um ponteiro
+void adicionar(no **lista , int valor){
 	no *novoNo = (no*) malloc(sizeof(no));
 	novoNo->valor = valor;
 	novoNo->prox = NULL;
@@ -45,32 +45,44 @@ bool remover(no **lista, int valor) {
 	}
 }
 
-int main (){
-	no *lista = NULL; // ela é so um endereço para um no, para o primeiro endereço 
-	adicionar(&lista,10); 
-	adicionar(&lista,5); // & ele é o endereço de memoria do ponteiro lista
-	adicionar(&lista,3);
-
-	no *noAtual = lista;
-	printf("Valores:\n");
+void printar(no **lista) {
+	no *noAtual = *lista;
+	printf("\nLista:\n");
 	while(noAtual != NULL){
-		printf("%d \n", noAtual->valor);
+		printf("%d\n", noAtual->valor);
 		noAtual = noAtual->prox;
 	}
-
-	remover(&lista, 5);
-	remover(&lista, 3);
-	remover(&lista, 10);
-
-	printf("\nValores:\n");
-
-	noAtual = lista;
-	while(noAtual != NULL){
-		printf("%d \n", noAtual->valor);
-		noAtual = noAtual->prox;
-	}
-	
+	printf("\n");
 }
 
-
+int main (){
+	no *lista = NULL;
+	
+	int opcao;
+	int valor;
+	
+	do {
+		printf("1- Adicionar\n2- Remover\n3- Listar\n4- Sair\n");
+		scanf("%d", &opcao);
+		if (opcao != 4) {
+			switch(opcao) {
+				case 1:
+					printf("Valor adicionar:");
+					scanf("%d", &valor);
+					adicionar(&lista, valor);
+					break;
+					
+				case 2:	
+					printf("Valor remover:");
+					scanf("%d", &valor);
+					remover(&lista, valor);
+					break;
+					
+				case 3:
+					printar(&lista);
+					break;
+			}
+		}		
+	} while (opcao != 4);
+}
 
