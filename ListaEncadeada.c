@@ -26,9 +26,9 @@ bool remover(no **lista, int valor) {
 	if (*lista == NULL)
 		return false;
 	
-	no *noAtual = *lista;
-	if (noAtual->valor == valor)
-		noAtual = noAtual->prox;
+	no *primeiro = *lista;
+	if (primeiro->valor == valor)
+		*lista = primeiro->prox;
 	else {
 		no *noAnterior = NULL;
 		no *noAtual = *lista;
@@ -59,6 +59,8 @@ int main (){
 	}
 
 	remover(&lista, 5);
+	remover(&lista, 3);
+	remover(&lista, 10);
 
 	printf("\nValores:\n");
 
