@@ -78,20 +78,20 @@ int main() {
     do {
     	printf("\n==============\n");
         printf("\nMenu:\n\n");
-        printf("1) Enfileirar.\n");
-        printf("2) Desenfileirar.\n");
+        printf("1) Empilhar.\n");
+        printf("2) Desempilhar.\n");
         printf("3) listar pilha.\n");
         printf("4) sair.\n");
         scanf("%d", &opcao);
 
         switch(opcao) {
             case 1:
-                printf("digite um número:");
+                printf("digite um nï¿½mero:");
                 scanf("%d", &numero);
                 
                 bool resultado = Push(pilha, numero);
                 if (resultado == false) 
-                	printf("Não foi possível enfileirar. Pilha cheia.");
+                	printf("Nï¿½o foi possï¿½vel enfileirar. Pilha cheia.");
                 else
                 	printf("Valor enfileirado com sucesso.");
                 	
@@ -100,7 +100,7 @@ int main() {
             case 2:        	
 				resultadoPop = Pop(pilha);
 				if (resultadoPop.erro)
-					printf("Não foi possível desenfileirar. Pilha Vazia.");
+					printf("Nï¿½o foi possï¿½vel desenfileirar. Pilha Vazia.");
 				else
                 	printf("Valor desenfileirado: %d", resultadoPop.valor);
                 	
